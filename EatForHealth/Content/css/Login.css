@@ -1,0 +1,26 @@
+﻿body {
+    background-image:url(../image/back.jpg);
+    background-size:100% 100%
+}
+
+#first{
+    padding:3% 0 0 7%;
+    width:30%;
+    height:70%
+}
+
+.Name {
+    font-family:'Kristen ITC';
+    font-size: 45px;
+    width:30%
+}
+
+.Aaa {
+    background-color: black;
+    width: 30%
+}
+
+.bbb {
+    background-color:aqua;
+    background-size:cover
+}
