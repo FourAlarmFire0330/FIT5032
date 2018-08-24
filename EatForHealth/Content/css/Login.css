@@ -1,26 +1,72 @@
 ﻿body {
-    background-image:url(../image/back.jpg);
-    background-size:100% 100%
+    background-image: url(../image/back.jpg);
+    background-size: 100% 100%;
+    background-repeat:no-repeat
 }
 
-#first{
-    padding:3% 0 0 7%;
-    width:30%;
-    height:70%
+#first, #second {
+    padding: 55px 0 0 35px;
+    width: 475px;
+    height: 370px;
+    display: table-cell;
+    text-align: center;
+    float:left
 }
 
 .Name {
-    font-family:'Kristen ITC';
+    font-family: 'Kristen ITC';
     font-size: 45px;
-    width:30%
+    width: 100%;
+    display: inline-block
 }
 
-.Aaa {
-    background-color: black;
-    width: 30%
+.LoginImage {
+    margin-top: 10px;
+    height: 200px;
+    width: 320px;
+    background-image: url(../image/diet.jpg);
+    background-size: cover;
+    background-blend-mode: screen;
+    display: inline-block
 }
 
-.bbb {
-    background-color:aqua;
-    background-size:cover
+.Information {
+    margin-top:20px;
+    width:inherit;
+    height: 350px
+}
+
+.uname, .pwd {
+    font-family:'Comic Sans MS';
+    font-size:30px;
+    margin-top: 50px
+}
+
+#uname, #pwd {
+    border: 0px;
+    border-bottom: 2px solid black;
+    background-color: inherit;
+    outline: none;
+    font-size: 20px;
+    width: 180px
+}
+
+.buttons {
+    margin-top: 60px
+}
+
+#btnLogin, #btnReg {
+    border: solid;
+    background-color: inherit;
+    width: 150px;
+    font-family: 'Comic Sans MS';
+    font-size: 30px
+}
+
+.Recipe {
+    background-image:url(../image/text.png);
+    margin-top: 60px;
+    height: 500px;
+    width: 385px;
+    background-size:contain
 }

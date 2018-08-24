@@ -19,5 +19,10 @@ namespace EatForHealth.Controllers
                 return View(m);
             }
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }
