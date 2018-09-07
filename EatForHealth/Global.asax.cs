@@ -1,5 +1,8 @@
-﻿using System;
+﻿using EatForHealth.DBContext;
+using EatForHealth.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +16,7 @@ namespace EatForHealth
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DBEatForHealth, Configuration>());
         }
     }
 }

@@ -1,25 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EatForHealth.DBContext;
-using System.Linq;
+using EatForHealth.Models;
 
 namespace EatForHealth.Controllers
 {
     public class UserController : Controller
     {
+        private DBContext.DBEatForHealth db = new DBContext.DBEatForHealth();
         // GET: User
         public ActionResult Login()
         {
-            using (DBContext.DBEatForHealth db = new DBContext.DBEatForHealth())
-            {
-                var m = db.Users.ToList();
-                return View(m);
-            }
+            return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User user)
+        {
+            bool isUserExists = db.Users.Where(a => a.UserName == user.UserName).Count() != 0;
+
+            if (isUserExists)
+                ModelState.AddModelError("Username", "Repeated!");
+
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Login", "User");
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                        System.Diagnostics.Trace.TraceInformation("Property: {0} Error: {1}",
+                        validationError.PropertyName,
+                        validationError.ErrorMessage);
+                        }
+                }
+                throw;
+             }
+        }
+        
         public ActionResult Register()
         {
             return View();

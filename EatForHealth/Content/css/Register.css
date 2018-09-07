@@ -1,0 +1,72 @@
+﻿body {
+    background-image: url(../image/back.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat
+}
+
+#first, #second {
+    padding: 55px 0 0 113px;
+    width: 1375px;
+    height: 270px
+}
+
+.Name {
+    font-family: 'Kristen ITC';
+    font-size: 45px;
+    width: 100%
+}
+
+.LoginImage {
+    margin-top: 10px;
+    height: 200px;
+    width: 320px;
+    background-image: url(../image/diet.jpg);
+    background-size: cover
+}
+
+.ProPicture {
+    float: left
+}
+
+.ProPicture1 {
+    float: left;
+    font-family: 'Comic Sans MS';
+    font-size: 35px;
+    margin-left: 105px;
+    padding-top: 55px
+}
+
+.uname, .career, .password, .gender, .Dob {
+    font-family: 'Comic Sans MS';
+    font-size: 30px;
+    padding-top: 45px;
+    padding-left: 20px;
+    float: left
+}
+
+#uname, #career, #password, #gender, #Dob {
+    border: 0px;
+    border-bottom: 2px solid black;
+    background-color: inherit;
+    outline: none;
+    font-size: 20px;
+    width: 180px
+}
+
+.input1, .input2, .input3 {
+    clear: both
+}
+
+.buttons {
+    margin-top: 80px;
+    margin-left: 150px
+}
+
+#btnCan, #btnReg {
+    border: solid;
+    background-color: inherit;
+    width: 150px;
+    font-family: 'Comic Sans MS';
+    font-size: 30px;
+    margin-left: 30px;
+}
