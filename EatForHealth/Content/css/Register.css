@@ -4,10 +4,16 @@
     background-repeat: no-repeat
 }
 
-#first, #second {
+#first {
     padding: 55px 0 0 113px;
     width: 1375px;
-    height: 270px
+    height: 100px
+}
+
+#second {
+    padding: 55px 0 0 113px;
+    width: 1375px;
+    height: 380px
 }
 
 .Name {
@@ -16,35 +22,15 @@
     width: 100%
 }
 
-.LoginImage {
-    margin-top: 10px;
-    height: 200px;
-    width: 320px;
-    background-image: url(../image/diet.jpg);
-    background-size: cover
-}
-
-.ProPicture {
-    float: left
-}
-
-.ProPicture1 {
-    float: left;
-    font-family: 'Comic Sans MS';
-    font-size: 35px;
-    margin-left: 105px;
-    padding-top: 55px
-}
-
-.uname, .career, .password, .gender, .Dob {
+.uname, .email, .password, .gender, .Dob {
     font-family: 'Comic Sans MS';
     font-size: 30px;
-    padding-top: 45px;
+    padding-top: 90px;
     padding-left: 20px;
     float: left
 }
 
-#uname, #career, #password, #gender, #Dob {
+#uname, #email, #password, #gender, #Dob {
     border: 0px;
     border-bottom: 2px solid black;
     background-color: inherit;
@@ -58,6 +44,7 @@
 }
 
 .buttons {
+    padding-top: 55px;
     margin-top: 80px;
     margin-left: 150px
 }

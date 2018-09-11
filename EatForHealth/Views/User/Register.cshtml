@@ -30,10 +30,6 @@
                 <div class="Name">
                     Eat For Health
                 </div>
-                <div class="LoginImage">  </div>
-            </div>
-            <div class="ProPicture1">
-                Profile picture
             </div>
         </div>
         <div id="second" style="padding-top: 0px">
@@ -45,24 +41,24 @@
                         @Html.ValidationMessageFor(model => model.UserName, null, new { @style = "font-size:20px; color:red" })
                     </div>
                 </div>
-                <div class="career">
-                    @Html.LabelFor(model => model.Career, new { @style = "margin-right: 20px" })
-                    @Html.TextBoxFor(model => model.Career, new { @id = "career", autocomplete = "off" })
+                <div class="email">
+                    &nbsp;@Html.LabelFor(model => model.Email, new { @style = "margin-right: 20px" })
+                    @Html.TextBoxFor(model => model.Email, new { @id = "email", autocomplete = "off" })
                     <div>
-                        @Html.ValidationMessageFor(model => model.Career, null, new { @style = "font-size:20px; color:red" })
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @style = "font-size:20px; color:red" })
                     </div>
                 </div>
             </div>
             <div class="input2">
                 <div class="password">
                     @Html.LabelFor(model => model.Password, new { @style = "margin-right: 20px" })
-                    @Html.PasswordFor(model => model.Password, new { @id = "password" })
+                    &nbsp;&nbsp;@Html.PasswordFor(model => model.Password, new { @id = "password" })
                     <div>
                         @Html.ValidationMessageFor(model => model.Password, null, new { @style = "font-size:20px; color:red" })
                     </div>
                 </div>
                 <div class="gender">
-                    @Html.LabelFor(model => model.Gender, new { @style = "margin-right: 20px" })
+                    &nbsp;@Html.LabelFor(model => model.Gender, new { @style = "margin-right: 20px" })
                     @Html.RadioButtonFor(model => model.Gender, "1", new { @style = "width: 40px; height: 18px" }) boy
                     @Html.RadioButtonFor(model => model.Gender, "2", new { @style = "width: 40px; height: 18px" }) girl
                     <div>

@@ -21,7 +21,10 @@ namespace EatForHealth.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string Career { get; set; }
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
+            ErrorMessage = "Not a Valid email Address")]
+        [Required(ErrorMessage = "Email cannot be null!")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Please choose your Gender!")]
         public string Gender { get; set; }

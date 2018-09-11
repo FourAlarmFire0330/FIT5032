@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using EatForHealth.DBContext;
 using EatForHealth.Models;
+using EatForHealth.Utils;
 
 namespace EatForHealth.Controllers
 {
@@ -35,6 +36,14 @@ namespace EatForHealth.Controllers
 
             try
             {
+                String toEmail = user.Email;
+
+                EmailSender es = new EmailSender();
+                es.Send(toEmail, "Congradations!", "You have successfully registered on EatForHealth~");
+
+                ViewBag.Result = "Email has been send.";
+
+                ModelState.Clear();
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Login", "User");

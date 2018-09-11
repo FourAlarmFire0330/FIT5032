@@ -86,4 +86,6 @@ E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\b
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\obj\Debug\EatForHealth.Migrations.InitialCreate.resources
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\obj\Debug\EatForHealth.csproj.GenerateResource.cache
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\obj\Debug\EatForHealth.Migrations.AddValidationUserName.resources
-E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\obj\Debug\EatForHealth.csprojAssemblyReference.cache
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\SendGrid.dll
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\SendGrid.pdb
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\SendGrid.xml
