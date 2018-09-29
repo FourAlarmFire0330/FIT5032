@@ -20,16 +20,6 @@
     display: inline-block
 }
 
-.LoginImage {
-    margin-top: 10px;
-    height: 200px;
-    width: 320px;
-    background-image: url(../image/diet.jpg);
-    background-size: cover;
-    background-blend-mode: screen;
-    display: inline-block
-}
-
 .Information {
     margin-top:20px;
     width:inherit;
@@ -39,6 +29,7 @@
 .uname, .pwd {
     font-family:'Comic Sans MS';
     font-size:30px;
+    padding-top: 50px;
     margin-top: 50px
 }
 
@@ -52,6 +43,7 @@
 }
 
 .buttons {
+    padding-top: 60px;
     margin-top: 60px
 }
 

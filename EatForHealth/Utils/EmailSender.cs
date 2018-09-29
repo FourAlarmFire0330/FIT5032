@@ -11,7 +11,7 @@ namespace EatForHealth.Utils
     public class EmailSender
     {
         // Please use your API KEY here.
-        private const String API_KEY = "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";
+        private const String API_KEY = "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";
 
         public void Send(String toEmail, String subject, String contents)
         {

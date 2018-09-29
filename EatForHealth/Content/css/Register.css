@@ -11,7 +11,7 @@
 }
 
 #second {
-    padding: 55px 0 0 113px;
+    padding: 0 0 0 113px;
     width: 1375px;
     height: 380px
 }
@@ -22,7 +22,7 @@
     width: 100%
 }
 
-.uname, .email, .password, .gender, .Dob {
+.uname, .email, .password, .confirmPassword, .gender, .Dob {
     font-family: 'Comic Sans MS';
     font-size: 30px;
     padding-top: 90px;
@@ -30,7 +30,7 @@
     float: left
 }
 
-#uname, #email, #password, #gender, #Dob {
+#uname, #email, #password, #confirmPassword, #gender, #Dob {
     border: 0px;
     border-bottom: 2px solid black;
     background-color: inherit;

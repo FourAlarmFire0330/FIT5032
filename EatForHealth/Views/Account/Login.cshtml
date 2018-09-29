@@ -1,0 +1,55 @@
+﻿@model EatForHealth.Models.SignInModel
+<html>
+@{
+    ViewBag.Title = "Login";
+}
+<head>
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <script>
+        function register() {
+            location.href = 'Register'
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="first">
+            <div class="Name">
+                Eat For Health
+            </div>
+            <div class="Information">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="uname">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "uname" })
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @id = "uname" } })
+                        <div>
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @style = "font-size:20px; color:red" })
+                        </div>
+                    </div>
+
+                    <div class="pwd">
+                        &nbsp;@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "pwd" })
+                        &nbsp;@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "pwd" } })
+                        <div>
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @style = "font-size:20px; color:red" })
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model,"", new { @style = "padding-top: 50px; font-size:20px; color:red" });
+                    <div class="buttons">
+                        <input type="submit" id="btnLogin" name="btnLogin" value="login" style="margin-right: 20px" />
+                        <input type="button" id="btnReg" name="btnReg" value="register" onclick="register()" style="margin-left: 20px" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div id="second">
+            <div class="Recipe">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

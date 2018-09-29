@@ -1,0 +1,122 @@
+﻿@model EatForHealth.Models.Recipe
+@using Microsoft.AspNet.Identity
+<html>
+<head>
+    @{
+        ViewBag.Title = "Add";
+    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/AddRecipe.css" />
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/froala_editor.css">
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/froala_style.css">
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/plugins/image.css">
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="~/Scripts/froala-editor/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function cancel() {
+            location.href = "Index";
+        }
+        // Check if the user login before submit the form
+        $(document).ready(function () {
+            $('form').bind('submit', checkLogin);
+        });
+
+        function checkLogin() {
+            //Razor
+            @{ 
+                var a = 0;
+                }
+            @if (Request.IsAuthenticated) {
+               a = 1;
+            }
+            else {
+                a = 2;
+            }
+            if (@a == 1) {
+                return true;
+            }
+            else
+                alert("You should Login first！")
+                return false;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="first">
+        <div class="Name">
+            Eat For Health
+        </div>
+        <div class="User">
+            @if (Request.IsAuthenticated)
+            {
+                <p>Hello, @User.Identity.GetUserName()</p>
+            }
+            else
+            {
+                <p>You are not login yet!</p>
+            }
+        </div>
+    </div>
+    @using (Html.BeginForm("Add", "Recipe", FormMethod.Post))
+    {
+        <div id="second">
+            @Html.AntiForgeryToken()
+            <div class="editorRecipe">
+                    @Html.LabelFor(model => model.RecipeName, new { @style = "margin-right: 20px" })
+                    @Html.TextBoxFor(model => model.RecipeName, new { @id = "editorRecipe", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.RecipeName)
+            </div>
+            <div class="editor">
+                <div class="WYSILable">
+                    @Html.LabelFor(model => model.RecipeDesc, new { @style = "margin-right: 20px" })
+                </div>
+                <div class="WYSI">
+                    @Html.TextAreaFor(model => model.RecipeDesc)
+                </div>
+            </div>
+        </div>
+        <div id="third">
+            <div class="buttons">
+                <input type="submit" id="btnAdd" name="btnAdd" value="Create" onclick="checkLogin()" style="margin-right: 20px" />
+                <input type="button" id="btnCan" name="btnCan" value="Cancel" onclick="cancel()" style="margin-left: 20px" />
+            </div>
+        </div>
+    }
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/froala_editor.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/paragraph_style.min.js"></script>
+    <script>
+        $(function () {
+            $('textarea').froalaEditor({
+                heightMin: 350,
+                heightMax: 350,
+                widthMin: 700,
+                toolbarButtons: ['bold', 'italic', '|', 'indent', 'outdent', 'formatOL', 'formatUL', '|', 'insertLink', 'insertImage', 'subscript', 'superscript']
+            })
+        });
+    </script>
+</body>
+</html>

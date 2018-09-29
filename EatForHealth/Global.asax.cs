@@ -16,7 +16,8 @@ namespace EatForHealth
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DBEatForHealth, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFHDbContext, EFHConfiguration>());
         }
     }
 }

@@ -5,18 +5,41 @@ using System.Web;
 using System.Web.Mvc;
 using EatForHealth.DBContext;
 using System.Linq;
+using EatForHealth.Models;
 
 namespace EatForHealth.Controllers
 {
     public class RecipeController : Controller
     {
+        private DBContext.EFHDbContext db = new DBContext.EFHDbContext();
         // GET: Recipe
-        public ActionResult Index(string username, string password)
+        public ActionResult Index(Recipe recipe)
         {
-            using (DBContext.DBEatForHealth db = new DBContext.DBEatForHealth())
+            return View(db.Recipes.ToList());
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Add(Recipe recipe)
+        {
+            if (!ModelState.IsValid)
             {
-            }
                 return View();
+            }
+
+            db.Recipes.Add(recipe);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Recipe");
+        }
+
+        public ActionResult aaa()
+        {
+            return View();
         }
     }
 }
