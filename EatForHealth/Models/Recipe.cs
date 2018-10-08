@@ -13,10 +13,15 @@ namespace EatForHealth.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RecipeID { get; set; }
 
-        [Required(ErrorMessage = "Not null")]
+        [Required(ErrorMessage = "RecipeName cannot be null!")]
         public string RecipeName { get; set; }
 
-        [Required(ErrorMessage = "Not null")]
+        [Required(ErrorMessage = "Description cannot be null!")]
         public string RecipeDesc { get; set; }
+
+        [Required(ErrorMessage = "Not null")]
+        public string RecipeDetails { get; set; }
+
+        public string HeadPicture { get; set; }
     }
 }

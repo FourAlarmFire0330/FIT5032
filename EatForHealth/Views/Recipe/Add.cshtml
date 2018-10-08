@@ -30,26 +30,35 @@
 
         function checkLogin() {
             //Razor
-            @{ 
-                var a = 0;
-                }
-            @if (Request.IsAuthenticated) {
-               a = 1;
-            }
-            else {
-                a = 2;
-            }
+            @{ var a = 0; }
+            @if (Request.IsAuthenticated) { a = 1; }
+            else { a = 2; }
             if (@a == 1) {
+                var b = $('textarea').froalaEditor('html.get', true);
+                var d = getFirstImage(b);
+                $("#HeadPicture").val(d);
                 return true;
-            }
-            else
-                alert("You should Login first！")
-                return false;
+                }
+                else {
+                    alert("You should Login first！");
+                    return false;
+                }
         }
+        //  set the First Image as HeadImage
+        function getFirstImage(x) {
+            var ultimateImageAddress = "";
+            var s = x.indexOf('src');
+            x = x.slice(s+5);
+            var end = x.indexOf('"');
+            var str = x.substring(0, end);
+            ultimateImageAddress = str;
+            return ultimateImageAddress;
+        }       
     </script>
 </head>
 
 <body>
+    <div id="selector"></div>
     <div id="first">
         <div class="Name">
             Eat For Health
@@ -70,18 +79,24 @@
         <div id="second">
             @Html.AntiForgeryToken()
             <div class="editorRecipe">
-                    @Html.LabelFor(model => model.RecipeName, new { @style = "margin-right: 20px" })
-                    @Html.TextBoxFor(model => model.RecipeName, new { @id = "editorRecipe", autocomplete = "off" })
-                    @Html.ValidationMessageFor(model => model.RecipeName)
+                @Html.LabelFor(model => model.RecipeName, new { @style = "margin-right: 20px" })
+                @Html.TextBoxFor(model => model.RecipeName, new { @id = "editorRecipe", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.RecipeName, "", new { @style = "font-size:20px; color:red" })
+            </div>
+            <div class="editorRecipe" style="margin-top: 20px">
+                @Html.LabelFor(model => model.RecipeDesc, new { @style = "margin-right: 20px" })
+                &nbsp;@Html.TextBoxFor(model => model.RecipeDesc, new { @id = "editorRecipe", autocomplete = "off", style = "width: 400px" })
+                @Html.ValidationMessageFor(model => model.RecipeDesc, "", new { @style = "font-size:20px; color:red" })
             </div>
             <div class="editor">
                 <div class="WYSILable">
-                    @Html.LabelFor(model => model.RecipeDesc, new { @style = "margin-right: 20px" })
+                    @Html.LabelFor(model => model.RecipeDetails, new { @style = "margin-right: 20px" })
                 </div>
                 <div class="WYSI">
-                    @Html.TextAreaFor(model => model.RecipeDesc)
+                    @Html.TextAreaFor(model => model.RecipeDetails)
                 </div>
             </div>
+            @Html.HiddenFor(model => model.HeadPicture, new { @id = "HeadPicture" })
         </div>
         <div id="third">
             <div class="buttons">
@@ -94,20 +109,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
-
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/froala_editor.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/align.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/char_counter.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/entities.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/font_size.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/font_family.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/image.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/image_manager.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/line_breaker.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/inline_style.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/lists.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/paragraph_format.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/froala-editor/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
     <script>
         $(function () {
             $('textarea').froalaEditor({

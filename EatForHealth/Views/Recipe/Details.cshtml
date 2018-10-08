@@ -1,0 +1,72 @@
+﻿@model EatForHealth.Models.Recipe
+@using Microsoft.AspNet.Identity
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/Details.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+    <link href="~/Content/css/component.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function BackToIndex() {
+            location.href = '../Index';
+        }
+    </script>
+</head>
+<body>
+    <div id="first">
+        <div class="Name">
+            Eat For Health
+        </div>
+        <div class="User">
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <p>Hello @User.Identity.GetUserName(), <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></p>
+                }
+            }
+            else
+            {
+                <p><a href="../Account/Login">Login</a> </p>
+            }
+        </div>
+    </div>
+    <div id="second">
+        <div class="recipeContent">
+            <div class="recipeName">
+                <h1>@Html.DisplayFor(model => model.RecipeName)</h1>
+            </div>
+            <div class="recipeDesc">
+                <h3>@Html.DisplayFor(model => model.RecipeDesc)</h3>
+            </div>
+            <div class="recipeDetails">
+                @Html.Raw(ViewBag.Content)
+            </div>
+            @Html.Raw(ViewBag.Comments)
+        </div>
+
+        @using (Ajax.BeginForm("AddComments", "Recipe", null, new AjaxOptions
+        {
+            HttpMethod = "Post",
+        }))
+        {
+            <input type="hidden" id="RecipeID" name="RecipeID" value="@Html.Raw(ViewBag.RecipeID)" />
+            <input type="text" id="Comments" name="Comments" />
+            <input type="submit" value="提交">
+        }
+
+    </div>
+    <!-- the overlay element -->
+    <div id="third">
+        <div class="buttons">
+            <button class="btnAdd" name="btnAdd" onclick="BackToIndex()">Back</button>
+        </div>
+    </div>
+</body>
+</html>

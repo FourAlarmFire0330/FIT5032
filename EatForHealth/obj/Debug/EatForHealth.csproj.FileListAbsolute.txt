@@ -106,4 +106,7 @@ E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\b
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\Microsoft.Owin.Security.xml
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\Microsoft.Owin.Security.Cookies.xml
 E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\Microsoft.Owin.Security.OAuth.xml
-E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\obj\Debug\EatForHealth.csprojAssemblyReference.cache
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\PagedList.dll
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\PagedList.Mvc.dll
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\PagedList.xml
+E:\Monash University\5032\Eat For Health Application\EatForHealth\EatForHealth\bin\PagedList.Mvc.xml

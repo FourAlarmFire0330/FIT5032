@@ -89,13 +89,15 @@ namespace EatForHealth.Controllers
             }
             return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Recipe");
         }
+
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)

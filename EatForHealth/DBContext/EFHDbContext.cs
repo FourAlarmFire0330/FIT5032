@@ -13,5 +13,7 @@ namespace EatForHealth.DBContext
         { }
 
         public DbSet<Recipe> Recipes { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EatForHealth.Models.Recipe>
+﻿@model PagedList.IPagedList<EatForHealth.Models.Recipe>
+@using PagedList.Mvc
 @using Microsoft.AspNet.Identity
 <html>
 <head>
@@ -7,6 +8,7 @@
     <link href="~/Content/css/Index.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
     <link href="~/Content/css/component.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
@@ -24,7 +26,11 @@
         <div class="User">
             @if (Request.IsAuthenticated)
             {
-                <p>Hello, @User.Identity.GetUserName()</p>
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <p>Hello @User.Identity.GetUserName(), <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></p>
+                }         
             }
             else
             {
@@ -35,19 +41,22 @@
     <div id="second">
         @foreach (var item in Model)
         {
-            <div class="new">
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipeName)
-                    </td>
-                    <br />
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipeDesc)
-                    </td>
-                    <br />
-                </tr>
+        <div class="new">
+            <div class="recipeName">
+                @Html.DisplayFor(modelItem => item.RecipeName)
             </div>
+            <div class="headPicture">
+                <img src="@Html.Raw(item.HeadPicture)" style="width:inherit; height:inherit" />
+            </div>
+            <div class="recipeDesc">
+                @Html.Raw(item.RecipeDesc)
+            </div>
+            @Html.ActionLink("Full Text", "Details", new { id = item.RecipeID })
+        </div>
         }
+    </div>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
     </div>
     <div class="md-modal md-effect-4" id="modal-4">
         <div class="md-content">
